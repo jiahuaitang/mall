@@ -1,0 +1,8 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        file-extension: yml
+        group: mall-gateway
+        prefix: application
+        server-addr: ${nacos-server-addr}

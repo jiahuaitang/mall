@@ -1,0 +1,27 @@
+server:
+  port: 8097
+  servlet:
+    context-path: /order-service
+spring:
+  application:
+    name: order-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 10.1.175.17:8848
+
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/test?serverTimezone=Hongkong&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: 123456
+      #sentinel:
+      # master: mymaster
+    #nodes: 127.0.0.1:6379,127.0.0.1:6380
+  cache:
+    type: redis

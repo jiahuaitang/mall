@@ -1,0 +1,40 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+server:
+  port: 8094
+  servlet:
+    context-path: /
+
+uri:
+  good-service: lb://good-service
+  order-service: lb://order-service
+spring:
+  application:
+    name: mall-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: good-service
+          uri: ${uri.good-service}
+          predicates:
+            - Path=/**
+          filters:
+            - StripPrefix=1
+        - id: order-service
+          uri: ${uri.order-service}
+          predicates:
+            - Path=/**
+          filters:
+            - StripPrefix=1
+
+    nacos:
+      discovery:
+        server-addr: 10.1.175.17:8848
+      password: nacos
+      username: nacos

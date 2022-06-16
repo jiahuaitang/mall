@@ -1,0 +1,20 @@
+server:
+  port: 8093
+  servlet:
+    context-path: /pc-consumer
+spring:
+  application:
+    name: pc-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 10.1.175.17:8848
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8080
+        port: 8888
+management:
+  endpoints:
+    web:
+      expsoure:
+        incluede: "*"
